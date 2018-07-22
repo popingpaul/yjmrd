@@ -4,10 +4,24 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    envImages: [{
+      url:"../../images/env01.jpg"
+    },{
+      url:"../../images/env02.jpg"
+    },{
+      url:"../../images/env03.jpg"
+    },{
+      url:"../../images/env04.jpg"
+    },{
+      url:"../../images/env05.jpg"
+    },{
+      url:"../../images/env06.jpg"
+    },{
+      url:"../../images/env07.jpg"
+    }]
   },
   //事件处理函数
   bindViewTap: function() {
@@ -42,6 +56,22 @@ Page({
         }
       })
     }
+  },
+  onLocation:(e)=>{
+    console.log(e)
+    wx.getLocation({
+      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      success: function(res) {
+        console.log
+        var latitude = res.latitude
+        var longitude = res.longitude
+        wx.openLocation({
+          latitude: latitude,
+          longitude: longitude,
+          scale: 28
+        })
+      }
+    })
   },
   getUserInfo: function(e) {
     console.log(e)

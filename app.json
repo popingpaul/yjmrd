@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/list/index"
+    "pages/map/index",
+    "pages/list/index",
+    "pages/test/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,7 +22,7 @@
         "selectedIconPath": "/icons/indexSelected.png"
       },
       {
-        "pagePath": "pages/list/index",
+        "pagePath": "pages/test/index",
         "text": "活动",
         "iconPath": "/icons/list.png",
         "selectedIconPath": "/icons/listSelected.png"

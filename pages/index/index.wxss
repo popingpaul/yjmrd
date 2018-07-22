@@ -1,21 +1,36 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+@font-face {
+  font-family: 'MyWebFont';
+  src: url('../../fonts/STXingkai.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+   url('../../fonts/STXingkai.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
+.container{
+  height: 100%;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.listContent{
+  font-size: 30rpx;
+  margin-top: 5px;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.list-title{
+  font-size: 30rpx;
+  vertical-align: middle;
 }
-
-.usermotto {
-  margin-top: 200px;
+.list-img{
+  width: 15px;
+  height: 17px;
+  margin-right: 5px;
+}
+.grid-view{
+  height: 386px;
+}
+.grid-img{
+  border-radius: 5%;
+  width: 80px;
+  height: 80px;
+}
+.view-title{
+  margin: 10px 20px;
+}
+.weui-grid{
+  padding: 4px 4px;
 }
