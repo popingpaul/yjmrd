@@ -22,7 +22,7 @@
         "selectedIconPath": "/icons/indexSelected.png"
       },
       {
-        "pagePath": "pages/test/index",
+        "pagePath": "pages/list/index",
         "text": "活动",
         "iconPath": "/icons/list.png",
         "selectedIconPath": "/icons/listSelected.png"

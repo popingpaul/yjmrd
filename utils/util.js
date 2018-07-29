@@ -13,7 +13,57 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
+const getLocation = (that) => {
+  wx.getLocation({
+    type: 'wgs84',
+    success: (res) => {
+      // 经纬度
+      const {
+        latitude,
+        longitude
+      } = res
+      const {
+        aK
+      } = that.data
+      wx.request({
+        url: 'https://api.map.baidu.com/geocoder/v2/?ak=' + aK + '&location=' + latitude + ',' + longitude + '&output=json',
+        data: {},
+        header: {
+          'content-type': 'application/json'
+        },
+        success: (res) => {
+          const {
+            city
+          } = res.data.result.addressComponent;
+          that.setData({
+            currentCity: city
+          })
+          wx.request({
+            url: 'xxx' + city,
+            data: {},
+            header: {
+              'content-type': 'application/json'
+            },
+            success:  (res) =>{
+              that.setData({
+                county: res.data,
+              })
+            },
+          })
+        }
+      })
 
+    },
+    fail: function () {
+      wx.showToast({
+        title: '授权失败',
+        icon: 'success',
+        duration: 1000
+      })
+    }
+  })
+}
 module.exports = {
-  formatTime: formatTime
+  formatTime,
+  getLocation
 }

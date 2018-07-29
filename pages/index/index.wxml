@@ -19,7 +19,8 @@
               <text class="list-text">美丽热线：</text>
             </view>
             <view class="weui-cell__bd weui-cell_primary">
-              <view class="listContent">18390874731 18390886797 </view>
+              <view class="listContent"  bindtap="onPhoneCall"><span wx:for="{{telphone}}"> {{item}} </span>
+            </view>
             </view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
           </navigator>
@@ -42,7 +43,7 @@
             <view class="weui-grids">
                 <block wx:for="{{envImages}}" wx:key="*this">
                     <navigator url="" class="weui-grid" hover-class="weui-grid_active">
-                        <image class="weui-grid__icon grid-img" src="{{item.url}}" />
+                        <image class="weui-grid__icon grid-img" src="{{item.url}}" bindtap="onImageClick" data-src="{{item}}"/>
                     </navigator>
                 </block>
             </view>

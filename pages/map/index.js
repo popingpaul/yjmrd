@@ -1,11 +1,16 @@
 // map.js
+import {
+    getLocation
+} from '../../utils/util'
 Page({
     data: {
+        latitude:28.157217025756836,
+        longitude:112.9512710571289,
         markers: [{
             iconPath: '../../icons/index.png',
             id: 0,
-            latitude: 23.099994,
-            longitude: 113.324520,
+            latitude: 28.157217025756836,
+            longitude: 112.9512710571289,
             width: 50,
             height: 50
         }],
@@ -42,30 +47,48 @@ Page({
     controltap(e) {
         console.log(e.controlId)
     },
-    onLoad() {
-        wx.getUserInfo({
+    getLocation() {
+        const that = this
+        wx.getLocation({
+            type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+            complete: res => {
+                console.log('complete',res)
+            },
+            fail: res => {
+                console.log('fail',res)
+            },
             success: res => {
-                console.log(res)
-                // app.globalData.userInfo = res.userInfo
-                // this.setData({
-                //     userInfo: res.userInfo,
-                //     hasUserInfo: true
+                console.log('getLocationSuccess',res)
+                const  {latitude,longitude} = res
+                that.setData({latitude,longitude})
+                // wx.openLocation({
+                //     latitude: latitude,
+                //     longitude: longitude,
+                //     scale: 28
                 // })
             }
         })
-        console.log(111)
-        wx.getLocation({
-            type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-            success: function (res) {
+    },
+   
+    onLoad() {
+        const that = this
+        wx.getSetting({
+            success(res) {
+                if (!res.authSetting['scope.userLocation']) {
+                    wx.authorize({
+                        scope: 'scope.userLocation',
+                        success() {
+                            that.getLocation()
+                        }
+                    })
+                }
+                that.getLocation()
+            },
+            complete(res) {
                 console.log(res)
-                var latitude = res.latitude
-                var longitude = res.longitude
-                wx.openLocation({
-                    latitude: latitude,
-                    longitude: longitude,
-                    scale: 28
-                })
             }
         })
+
+
     }
 })

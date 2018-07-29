@@ -9,7 +9,7 @@
 }
 .listContent{
   font-size: 30rpx;
-  margin-top: 5px;
+  margin-top: 4px;
 }
 .list-title{
   font-size: 30rpx;
